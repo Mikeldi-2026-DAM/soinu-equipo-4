@@ -26,10 +26,10 @@ Abre <http://127.0.0.1:8000/> y, para probar la API, <http://127.0.0.1:8000/docs
 
 Datos de cada tipo
 
--Abono general: id, nombre, descripcion, precio, plazas totales, plazas libres, fecha inicio, fecha fin, zonas de acceso, estado
--Day Pass: id, nombre, descripcion, precio, plazas totales, plazas libres, fecha_validez, zonas de acceso, estado
--Vip: id, nombre, descripcion, precio, plazas totales, plazas libres, fecha inicio, fecha fin, zonas de acceso, estado
--Abono + parcela: id, nombre, descripcion, precio, plazas totales, plazas libres, fecha inicio, fecha fin, zonas de acceso, estado
+-Abono general: id, nombre, descripcion, precio, fecha inicio, fecha fin, zonas de acceso, estado
+-Day Pass: id, nombre, descripcion, precio, fecha_validez, zonas de acceso, estado
+-Vip: id, nombre, descripcion, precio, fecha inicio, fecha fin, zonas de acceso, estado
+-Abono + parcela: id, nombre, descripcion, precio, fecha inicio, fecha fin, zonas de acceso, estado
 
 
 Datos de cada compra
