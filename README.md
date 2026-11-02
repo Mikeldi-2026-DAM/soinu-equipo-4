@@ -34,7 +34,7 @@ Datos de cada tipo
 
 Datos de cada compra
 
--Compra: id, fecha, cantidad total de entradas, total a pagar, nombre, apellido, correo
+-Compra: codigo, nombre_entrada, fecha, cantidad total de entradas, total a pagar, nombre, apellido, correo, fecha_compra
 
 
 Reglas
