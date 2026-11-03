@@ -1,5 +1,7 @@
 from typing_extensions import Literal
+from fastapi import FastAPI
 from datetime import date
+from fastapi import FastAPI, HTTPException
 from fastapi import FastAPI
 from pydantic import BaseModel, Field, field_validator, model_validator
 
@@ -45,6 +47,21 @@ def buscar_entrada_por_nombre(nombre):
             return entrada
     return None
 
+def buscar_entrada_por_id(id):
+    for entrada in ENTRADAS:
+        if entrada["id"]==id:
+            return entrada
+    return None
+
+
+def buscar_compra_por_id(id):
+    for compra in COMPRAS:
+        if compra["id"]==id:
+            return compra
+    return None 
+
+
+
 def siguiente_id(COMPRAS):
     return max((m["id"] for m in COMPRAS), default=0) + 1
 
@@ -67,6 +84,21 @@ def plazas_libres(entrada):
 def obtener_entradas():
     return ENTRADAS
 
+@app.get("/api/entradas/{id}")
+def obtener_entrada(id: int):
+    entrada = buscar_entrada_por_id(id)
+
+    if entrada is None:
+        raise HTTPException(status_code=404,detail="Entrada no encontrada")
+
+    return entrada
+
+@app.get("/api/compras/{id}")
+def obtener_compra(id: int):
+    compra=buscar_compra_por_id(id)
+
+    if compra is None:
+        raise HTTPException(status_code=404,detail="No se ha realizado compras")
 # 1. GET /salud → {"ok": True, "app": "Muro"}
 
 ENTRADAS = [
@@ -83,7 +115,6 @@ PLAZAS_TOTALES = {
     "VIP": 100,
     "Abono + parcela": 80,
 }
-
 
 # ---------- PRUEBA (en el Aula; en tu ordenador: python main.py) ----------
 if __name__ == "__main__":
